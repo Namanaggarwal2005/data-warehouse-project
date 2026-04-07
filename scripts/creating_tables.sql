@@ -7,7 +7,7 @@ CREATE TABLE bronze.crm_cust_info(
 	cst_lastname NVARCHAR(50),
 	cst_marital_status NVARCHAR(1),
 	cst_gndr NVARCHAR(1),
-	cst_create_date DATE
+	cst_create_date VARCHAR(50)
 );
 GO;
 IF OBJECT_ID('bronze.crm_prod_info', 'U') IS NOT NULL
