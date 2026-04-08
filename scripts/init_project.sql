@@ -15,9 +15,6 @@ WARNING:
 USE master;
 GO
 
-
-
-
 -- Switch to master database
 USE master;
 GO
