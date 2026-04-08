@@ -4,7 +4,18 @@ REPLACE(cid,'-','') cid
 FROM 
 bronze.erp_loc_a101;
 
-
 SELECT TOP 10
 cst_key
 FROM silver.crm_cust_info
+
+SELECT
+REPLACE(cid,'-','') cid
+FROM 
+bronze.erp_loc_a101
+WHERE REPLACE(cid,'-','')
+NOT IN
+(
+SELECT
+cst_key
+FROM silver.crm_cust_info
+)
