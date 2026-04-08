@@ -53,10 +53,10 @@ SELECT
       ,REPLACE(SUBSTRING(prd_key,7),'-','_') prd_key
       ,TRIM(prd_nm) prd_nm
       ,ISNULL(prd_cost,0) prd_cost
-      ,CASE WHEN prd_line='M' THEN 'Mountain'
-            WHEN prd_line='R' THEN 'Road'
-            WHEN prd_line='S'THEN 'Other Sale'
-            WHEN prd_line='T' THEN 'Travel'
+      ,CASE WHEN UPPER(TRIM(prd_line))='M' THEN 'Mountain'
+            WHEN UPPER(TRIM(prd_line))='R' THEN 'Road'
+            WHEN UPPER(TRIM(prd_line))='S'THEN 'Other Sale'
+            WHEN UPPER(TRIM(prd_line))='T' THEN 'Travel'
             ELSE 'n/a'
         END prd_line
       ,CAST(prd_start_dt AS DATE) prd_start_dt
