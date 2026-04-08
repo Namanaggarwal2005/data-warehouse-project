@@ -58,3 +58,9 @@ bronze.crm_sales_details
 WHERE sls_order_dt >20500101
 OR
 sls_order_dt < 19000101
+
+SELECT
+*
+FROM bronze.crm_sales_details
+WHERE sls_order_dt>sls_ship_dt OR
+sls_order_dt>sls_due_dt
