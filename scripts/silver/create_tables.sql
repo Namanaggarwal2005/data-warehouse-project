@@ -14,11 +14,12 @@ GO
 IF OBJECT_ID('silver.crm_prod_info', 'U') IS NOT NULL
 	DROP TABLE silver.crm_prod_info;
 CREATE TABLE silver.crm_prod_info(
-	prod_id INT,
-	prod_key NVARCHAR(50),
-	prod_nm NVARCHAR(50),
-	prod_cost INT,
-	prod_line NVARCHAR(50),
+	prd_id INT,
+	cat_id NVARCHAR(50),
+    prd_key NVARCHAR(50),
+	prd_nm NVARCHAR(50),
+	prd_cost INT,
+	prd_line NVARCHAR(50),
 	prd_start_dt DATE,
 	prd_end_dt DATE,
 	dwh_create_date DATETIME DEFAULT GETDATE()
