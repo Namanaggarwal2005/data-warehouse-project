@@ -35,3 +35,26 @@ SELECT TOP (1000) [sls_ord_num]
   FROM [DataWarehouse].[bronze].[crm_sales_details]
   WHERE sls_cust_id NOT IN (SELECT cst_id 
 FROM silver.crm_cust_info)
+
+
+-- Date handling
+SELECT
+NULLIF(sls_order_dt,0) sls_order_dt
+FROM 
+bronze.crm_sales_details
+WHERE sls_order_dt <= 0
+OR LEN(sls_order_dt)<8
+
+SELECT
+NULLIF(sls_order_dt,0) sls_order_dt
+FROM 
+bronze.crm_sales_details
+WHERE LEN(sls_order_dt) <> 8
+
+SELECT
+NULLIF(sls_order_dt,0) sls_order_dt
+FROM 
+bronze.crm_sales_details
+WHERE sls_order_dt >20500101
+OR
+sls_order_dt < 19000101
