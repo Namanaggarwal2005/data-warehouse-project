@@ -10,3 +10,13 @@ FROM
 		WHERE prd_id IS NOT NULL
 	)t
 	WHERE flag = 1;
+
+
+-- Breaking prd_key into two parts
+SELECT
+	REPLACE(SUBSTRING(prd_key,1,5),'-','_') cat_id
+FROM bronze.crm_prd_info
+
+SELECT
+	REPLACE(SUBSTRING(prd_key,7),'-','_') prd_key
+FROM bronze.crm_prd_info
