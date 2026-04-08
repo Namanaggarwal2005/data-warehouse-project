@@ -10,3 +10,11 @@ bronze.erp_cust_az12;
 SELECT TOP 10
 cst_key
 FROM silver.crm_cust_info
+
+-- Date Checking
+SELECT
+bdate
+FROM bronze.erp_cust_az12
+WHERE bdate > GETDATE();
+
+
