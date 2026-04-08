@@ -26,3 +26,9 @@ SELECT
 *
 FROM bronze.crm_prd_info
 WHERE prd_nm <> TRIM(prd_nm);
+
+-- End date fixations using LEAD()
+SELECT
+	CAST(prd_start_dt AS DATE) prd_start_dt,
+	CAST(LEAD(prd_start_dt) OVER(PARTITION BY prd_key ORDER BY prd_start_dt) - 1 AS DATE) prd_end_dt
+FROM bronze.crm_prd_info
