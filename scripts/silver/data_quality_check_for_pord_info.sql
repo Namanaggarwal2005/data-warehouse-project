@@ -20,3 +20,9 @@ FROM bronze.crm_prd_info
 SELECT
 	REPLACE(SUBSTRING(prd_key,7),'-','_') prd_key
 FROM bronze.crm_prd_info
+
+--unwanted Space check
+SELECT
+*
+FROM bronze.crm_prd_info
+WHERE prd_nm <> TRIM(prd_nm);
