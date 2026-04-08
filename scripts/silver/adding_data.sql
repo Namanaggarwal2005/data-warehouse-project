@@ -1,6 +1,6 @@
 TRUNCATE TABLE silver.crm_cust_info;
-
-INSERT INTO silver.crm_cust_info
+INSERT INTO 
+	silver.crm_cust_info
 (
 	cst_id,
 	cst_key,
@@ -33,10 +33,9 @@ INSERT INTO silver.crm_cust_info
 	)t
 	WHERE flag = 1;
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 TRUNCATE TABLE silver.crm_prod_info;
-
 INSERT INTO silver.crm_prod_info (
 	prd_id,
 	cat_id ,
@@ -63,10 +62,9 @@ SELECT
       ,CAST(LEAD(prd_start_dt) OVER(PARTITION BY prd_key ORDER BY prd_start_dt) - 1 AS DATE) prd_end_dt
   FROM bronze.[crm_prd_info]
 
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 TRUNCATE TABLE silver.crm_sales_details;
-
 INSERT INTO
 silver.crm_sales_details
 (
@@ -104,10 +102,8 @@ sls_quantity
 FROM
 bronze.crm_sales_details
 
-
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TRUNCATE TABLE silver.erp_cust_az12;
-
 INSERT INTO silver.erp_cust_az12
 (
 	cid,
@@ -129,8 +125,9 @@ CASE WHEN UPPER(TRIM(gen)) = 'M' THEN 'Male'
 END gen
 FROM bronze.erp_cust_az12
 
-TRUNCATE TABLE silver.erp_loc_a101;
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+TRUNCATE TABLE silver.erp_loc_a101;
 INSERT INTO 
 silver.erp_loc_a101
 (cid,cntry)
@@ -143,3 +140,21 @@ CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 END cntry
 FROM 
 bronze.erp_loc_a101
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TRUNCATE TABLE silver.erp_px_cat_g1v2;
+INSERT INTO
+silver.erp_px_cat_g1v2
+(
+	id,
+	cat,
+	subcat,
+	maintenance
+)
+SELECT
+TRIM(id) id,
+TRIM(cat) cat,
+TRIM(subcat) subcat,
+TRIM(maintenance) maintenance
+FROM bronze.erp_px_cat_g1v2
