@@ -21,6 +21,6 @@ gold.fact_sales
 
 --Customer age group
 SELECT
-    DATEDIFF(year,MIN(birthdate),'2026-04-14') AS oldest_customer,
-    DATEDIFF(year,MAX(birthdate),'2026-04-14') AS youngest_customer
+    DATEDIFF(year,MIN(birthdate),GETDATE()) AS oldest_customer,
+    DATEDIFF(year,MAX(birthdate),GETDATE()) AS youngest_customer
 FROM gold.dim_customers;
