@@ -1,5 +1,6 @@
 /*
 	Through this we try to underdstand our buisness and came across answers to many Buisness Questions using Basic Queries.
+											AKA Exploratory Data Analysis
 */
 
 -- Countries from where our customers come from
