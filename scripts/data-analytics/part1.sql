@@ -95,3 +95,29 @@ AVG(cost) [Average Cost]
 FROM
 gold.dim_products
 GROUP BY category
+
+--Total revenue genrated for each country
+SELECT
+pr.category,
+SUM(sl.sales_amount) [Sales]
+FROM 
+gold.dim_products pr
+INNER JOIN
+gold.fact_sales sl
+ON pr.product_key = sl.product_key
+GROUP BY pr.category
+
+--TOP SPENDERS
+SELECT
+    c.customer_key,
+    c.first_name,
+    c.last_name,
+    SUM(f.sales_amount) AS total_revenue
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_customers c
+    ON c.customer_key = f.customer_key
+GROUP BY
+    c.customer_key,
+    c.first_name,
+    c.last_name
+ORDER BY total_revenue DESC;
