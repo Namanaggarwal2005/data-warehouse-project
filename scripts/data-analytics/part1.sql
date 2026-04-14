@@ -121,3 +121,16 @@ GROUP BY
     c.first_name,
     c.last_name
 ORDER BY total_revenue DESC;
+
+--Top 5 Highest Revenue generating products
+SELECT TOP 5
+RANK() OVER(ORDER BY SUM(sl.sales_amount) DESC) RANKINGS,
+pd.product_name,
+SUM(sl.sales_amount) Sales
+FROM
+gold.fact_sales sl
+LEFT JOIN
+gold.dim_products pd
+ON sl.product_key = pd.product_key
+GROUP BY pd.product_name
+ORDER BY SUM(sl.sales_amount) DESC
