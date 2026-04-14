@@ -24,3 +24,41 @@ SELECT
     DATEDIFF(year,MIN(birthdate),GETDATE()) AS oldest_customer,
     DATEDIFF(year,MAX(birthdate),GETDATE()) AS youngest_customer
 FROM gold.dim_customers;
+
+--Total sales
+SELECT
+CAST(sum(sales_amount)/1000000 AS VARCHAR)+' Million' AS [sales]
+FROM
+gold.fact_sales
+
+--Total sold quantity
+SELECT
+	sum(quantity) AS [sold_quantity]
+FROM
+gold.fact_sales
+
+--Average Selling Price
+SELECT
+	AVG(price) AS [sold_quantity]
+FROM
+gold.fact_sales
+
+--Total Number of orders, products and customers
+SELECT
+	COUNT(customer_key)
+FROM
+gold.dim_customers
+
+SELECT
+	COUNT(product_key)
+FROM
+gold.dim_products
+
+SELECT COUNT(order_number)
+FROM
+(
+SELECT DISTINCT
+	order_number
+FROM
+gold.fact_sales
+)t
