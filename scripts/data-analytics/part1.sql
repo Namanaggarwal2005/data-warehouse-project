@@ -62,3 +62,36 @@ SELECT DISTINCT
 FROM
 gold.fact_sales
 )t
+
+--Total customers by country
+SELECT
+country,
+COUNT(country) [Total Customers]
+FROM
+gold.dim_customers
+GROUP BY country
+
+
+--Total customers by gender
+SELECT
+gender,
+COUNT(gender) [Total Customers]
+FROM
+gold.dim_customers
+GROUP BY gender
+
+--Total products by category
+SELECT
+category,
+COUNT(category) [Total Products]
+FROM
+gold.dim_products
+GROUP BY category
+
+--Average Cost in each category
+SELECT
+category,
+AVG(cost) [Average Cost]
+FROM
+gold.dim_products
+GROUP BY category
